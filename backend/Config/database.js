@@ -8,5 +8,5 @@ const DB = () => {
         .catch((error) => {
             console.log("database error");
         });
-};
+}; 
 module.exports = DB;
