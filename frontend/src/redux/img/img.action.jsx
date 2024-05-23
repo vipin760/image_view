@@ -17,14 +17,14 @@ export const imageGet = () => async(dispatch)=>{
     }
 }
 
-export const imageCreate=()=>async(dispatch)=>{
+export const imageCreate=(formData)=>async(dispatch)=>{
     try {
         dispatch({type:IMAGE_CREATE_REQUEST});
-        const { data } = await axios.post(`${USER_API}/image`);
+        const { data } = await axios.post(`${USER_API}/image`,formData);
         if(data.status){
             toast.success(data.message)
         }
-        if(data.status=true)
+        if(data.status)
         dispatch({type:IMAGE_CREATE_SUCCESS,payload:data})
     } catch (error) {
         toast.success(error.response.data.message)
