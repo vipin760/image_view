@@ -57,7 +57,7 @@ const Edit = () => {
   <>
     <div className="form_class flex justify-center items-center p-4 bg-slate-100">
  <div className='shadow-lg p-5'>
-<h1 className='text-2xl font-serif border-l underline'>EDIT DATA</h1>
+<h1 className='text-2xl font-serif border-l underline'>EDIT IMAGE</h1>
     {
     imageData&&imageData.data&&(
       <>
