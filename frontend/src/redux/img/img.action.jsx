@@ -46,8 +46,8 @@ export const imageCreate = (formData) => async (dispatch) => {
         if (data.status) {
             toast.success(data.message);
         }
-        if (data.status)
             dispatch({ type: IMAGE_CREATE_SUCCESS, payload: data });
+
     } catch (error) {
         toast.success(error.response.data.message);
         dispatch({
