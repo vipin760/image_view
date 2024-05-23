@@ -5,11 +5,14 @@ import Footer from './components/Partials/Footer/Footer'
 const Home = lazy(()=>import('./components/Pages/Home/Home'))
 const Create = lazy(()=>import('./components/Pages/Create/Create')) 
 const Edit = lazy(()=>import('./components/Pages/Edit/Edit'))
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <>
       <div>
+        <ToastContainer/>
         <Header/>
         <BrowserRouter>
         <Routes>
@@ -18,7 +21,7 @@ function App() {
           <Route path='/edit/:id' element={<Edit/>}/>
         </Routes>
         </BrowserRouter>
-        <Footer/>
+        {/* <Footer/> */}
         </div>
     </>
   )
