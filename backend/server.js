@@ -6,7 +6,7 @@ dotenv.config({ path: "./config/.env" });
 const DB = require("./Config/database");
 const port = 3000;
 app.use(cors({
-    origin:["https://image-view.onrender.com","http://localhost:3000"]
+    origin:["https://image-view.onrender.com","http://localhost:5173"]
 }));
 DB();
 app.use(express.json());
