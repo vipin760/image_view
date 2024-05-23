@@ -3,6 +3,9 @@ import {
     IMAGE_CREATE_FAIL,
     IMAGE_CREATE_REQUEST,
     IMAGE_CREATE_SUCCESS,
+    IMAGE_DELETE_FAIL,
+    IMAGE_DELETE_REQUEST,
+    IMAGE_DELETE_SUCCESS,
     IMAGE_EDIT_FAIL,
     IMAGE_EDIT_REQUEST,
     IMAGE_EDIT_SUCCESS,
@@ -87,6 +90,25 @@ export const imageUpdate = (formData) => async (dispatch) => {
         toast.success(error.response.data.message);
         dispatch({
             type: IMAGE_UPDATE_FAIL,
+            payload:
+                error.message && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        });
+    }
+};
+export const imageDelete = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: IMAGE_DELETE_REQUEST });
+        const { data } = await axios.delete(`${USER_API}/image/${id}`);
+        if (data.status) {
+            toast.success(data.message);
+        }
+        dispatch({ type: IMAGE_DELETE_SUCCESS, payload: data });
+    } catch (error) {
+        toast.success(error.response.data.message);
+        dispatch({
+            type: IMAGE_DELETE_FAIL,
             payload:
                 error.message && error.response.data.message
                     ? error.response.data.message
