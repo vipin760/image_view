@@ -1,0 +1,7 @@
+.spinner{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh; /* Use 100vh to cover the entire viewport */
+    width: 100%;
+}

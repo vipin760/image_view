@@ -27,15 +27,20 @@ exports.getAllImage = async (req, res) => {
                 .send({ status: true, message: "No images found" });
         }
     } catch (error) {
+<<<<<<< HEAD
         return res
             .status(500)
             .send({ status: false, message: `${error.message}` });
+=======
+        console.log(error.message)
+        return res.status(500).send({status:false, message: `${error.message}` });
+>>>>>>> master
     }
 };
 exports.updateImage = async (req, res) => {
     try {
-        const { title, description } = req.body;
-        const img = await Image.findByIdAndUpdate(req.params.id, {
+        const { title, description,_id } = req.body;
+        const img = await Image.findByIdAndUpdate(_id, {
             title,
             description,
         });
@@ -47,11 +52,15 @@ exports.updateImage = async (req, res) => {
         }
         return res
             .status(200)
+<<<<<<< HEAD
             .send({
                 status: true,
                 message: "successfully updated images",
                 data: img,
             });
+=======
+            .send({status:true, message: "successfully updated images" });
+>>>>>>> master
     } catch (error) {
         return res
             .status(500)
@@ -60,14 +69,31 @@ exports.updateImage = async (req, res) => {
 };
 exports.deleteImage = async (req, res) => {
     try {
-        console.log(req.params.tha);
-        await Image.findByIdAndDelete(req.params.tha);
+        await Image.findByIdAndDelete(req.params.id);
         return res
             .status(200)
             .send({ status: true, message: "The image deleted successfully" });
     } catch (error) {
+<<<<<<< HEAD
         return res
             .status(500)
             .send({ status: false, message: `${error.message}` });
+=======
+        return res.status(500).send({status:false, message: `${error.message}` });
+>>>>>>> master
     }
 };
+
+exports.fetchSigleImage=async(req,res)=>{
+    try {
+        const imgData = await Image.findById(req.params.id);
+        if(imgData){
+            return res
+            .status(200)
+            .send({status:true,data:imgData, message: "The image found successfully" });
+        }
+        
+    } catch (error) {
+        return res.status(500).send({status:false, message: `${error.message}` });
+    }
+}
